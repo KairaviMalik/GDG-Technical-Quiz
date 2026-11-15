@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GDG Technical Quiz - Test your knowledge of programming, technology and Google developer tools.">
+
+    <title>GDG Technical Quiz</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="topbar">
+        <div class="brand">
+            <div class="gdg-mark" aria-label="GDG logo">
+                <span class="mark-blue">&lt;</span>
+                <span class="mark-red">/</span>
+                <span class="mark-green">&gt;</span>
+            </div>
+
+            <div>
+                <p class="brand-name">GDG Technical Quiz</p>
+                <p class="brand-subtitle">Developer Challenge</p>
+            </div>
+        </div>
+
+        <div class="topbar-badge">GDG</div>
+    </header>
+
+
+    <main class="main-container">
+
+        <!-- START SCREEN -->
+        <section id="start-screen" class="screen active">
+            <div class="welcome-layout">
+
+                <div class="welcome-content">
+                    <p class="eyebrow">TECHNICAL CHALLENGE</p>
+
+                    <h1>How well do you know the developer world?</h1>
+
+                    <p class="welcome-text">
+                        Test your knowledge of programming, web technologies,
+                        Git, APIs and Google developer tools.
+                    </p>
+
+                    <div class="quiz-info">
+                        <div class="info-item">
+                            <span class="info-number">15</span>
+                            <span class="info-label">Questions</span>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="info-number">20s</span>
+                            <span class="info-label">Per question</span>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="info-number">1</span>
+                            <span class="info-label">Point each</span>
+                        </div>
+                    </div>
+
+                    <div class="name-area">
+                        <label for="participant-name">Your name</label>
+
+                        <input
+                            type="text"
+                            id="participant-name"
+                            placeholder="Enter your name"
+                            maxlength="30"
+                            autocomplete="off"
+                        >
+
+                        <p id="name-error" class="error-message"></p>
+                    </div>
+
+                    <button id="start-btn" class="primary-btn">
+                        Start Quiz
+                        <span>→</span>
+                    </button>
+                </div>
+
+
+                <aside class="welcome-side">
+                    <div class="side-heading">
+                        <span class="status-dot"></span>
+                        Quiz topics
+                    </div>
+
+                    <div class="topic-list">
+                        <div class="topic">
+                            <span class="topic-icon blue">01</span>
+                            <div>
+                                <strong>Programming</strong>
+                                <p>Core concepts & logic</p>
+                            </div>
+                        </div>
+
+                        <div class="topic">
+                            <span class="topic-icon red">02</span>
+                            <div>
+                                <strong>Web & APIs</strong>
+                                <p>Modern web development</p>
+                            </div>
+                        </div>
+
+                        <div class="topic">
+                            <span class="topic-icon yellow">03</span>
+                            <div>
+                                <strong>Git & GitHub</strong>
+                                <p>Version control basics</p>
+                            </div>
+                        </div>
+
+                        <div class="topic">
+                            <span class="topic-icon green">04</span>
+                            <div>
+                                <strong>Google Tools</strong>
+                                <p>Firebase, Cloud & Android</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="side-note">
+                        Questions are selected randomly on every attempt.
+                    </p>
+                </aside>
+
+            </div>
+        </section>
+
+
+        <!-- QUIZ SCREEN -->
+        <section id="quiz-screen" class="screen">
+
+            <div class="quiz-top">
+                <div>
+                    <p class="small-label">PARTICIPANT</p>
+                    <p id="display-name" class="participant-display"></p>
+                </div>
+
+                <div class="quiz-stats">
+                    <div class="stat">
+                        <span class="small-label">SCORE</span>
+                        <strong><span id="score">0</span>/<span id="total-score">15</span></strong>
+                    </div>
+
+                    <div class="timer-box" id="timer-box">
+                        <span class="small-label">TIME</span>
+                        <strong><span id="timer">20</span>s</strong>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="progress-section">
+                <div class="progress-text">
+                    <span id="question-counter">Question 1 of 15</span>
+                    <span id="progress-percent">7%</span>
+                </div>
+
+                <div class="progress-track">
+                    <div id="progress-bar" class="progress-bar"></div>
+                </div>
+            </div>
+
+
+            <div class="question-card">
+                <div class="question-meta">
+                    <span id="category-badge" class="category-badge">Programming</span>
+                </div>
+
+                <h2 id="question-text">Question goes here</h2>
+
+                <div id="answer-options" class="answer-options"></div>
+
+                <div class="question-footer">
+                    <p id="selection-message">Select one answer to continue.</p>
+
+                    <button id="submit-btn" class="primary-btn submit-btn" disabled>
+                        Submit Answer
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- RESULT SCREEN -->
+        <section id="result-screen" class="screen">
+
+            <div class="result-header">
+                <p class="eyebrow">QUIZ COMPLETED</p>
+                <h1>Here’s how you did.</h1>
+                <p id="result-name" class="result-subtitle"></p>
+            </div>
+
+            <div class="result-grid">
+
+                <div class="score-card">
+                    <p class="small-label">FINAL SCORE</p>
+
+                    <div class="score-circle">
+                        <span id="final-score">0</span>
+                        <small>/ 15</small>
+                    </div>
+
+                    <h2 id="performance-title">Great work!</h2>
+                    <p id="performance-message"></p>
+                </div>
+
+
+                <div class="result-details">
+
+                    <div class="result-stat">
+                        <span>Accuracy</span>
+                        <strong id="accuracy">0%</strong>
+                    </div>
+
+                    <div class="result-stat">
+                        <span>Correct answers</span>
+                        <strong id="correct-count">0</strong>
+                    </div>
+
+                    <div class="result-stat">
+                        <span>Incorrect answers</span>
+                        <strong id="incorrect-count">0</strong>
+                    </div>
+
+                    <div class="result-actions">
+                        <button id="review-btn" class="primary-btn">
+                            Review Answers
+                        </button>
+
+                        <button id="restart-btn" class="secondary-btn">
+                            Try Again
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="leaderboard-section">
+                <div class="section-title-row">
+                    <div>
+                        <p class="small-label">LOCAL RESULTS</p>
+                        <h2>Leaderboard</h2>
+                    </div>
+
+                    <span class="leaderboard-note">Top 5 attempts</span>
+                </div>
+
+                <div id="leaderboard" class="leaderboard"></div>
+            </div>
+
+        </section>
+
+
+        <!-- REVIEW SCREEN -->
+        <section id="review-screen" class="screen">
+
+            <div class="review-heading">
+                <div>
+                    <p class="eyebrow">ANSWER REVIEW</p>
+                    <h1>Review your responses</h1>
+                    <p>Compare your answers with the correct ones.</p>
+                </div>
+
+                <button id="back-result-btn" class="secondary-btn">
+                    Back to Results
+                </button>
+            </div>
+
+            <div id="review-list" class="review-list"></div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>Built for the GDG Technical Quiz Challenge</p>
+
+        <div class="footer-colors">
+            <span class="blue-bg"></span>
+            <span class="red-bg"></span>
+            <span class="yellow-bg"></span>
+            <span class="green-bg"></span>
+        </div>
+    </footer>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
