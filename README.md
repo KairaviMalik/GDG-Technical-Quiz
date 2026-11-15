@@ -70,4 +70,6 @@ The project can be deployed using:
 
 ## Author
 
-Created as part of the GDG Technical Quiz Platform task.
+**Kairavi Malik**
+
+Developed as part of the GDG Technical Quiz Platform task.
